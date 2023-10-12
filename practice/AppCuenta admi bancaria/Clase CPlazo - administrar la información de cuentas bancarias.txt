@@ -1,0 +1,95 @@
+Clase CPlazo viene-de CCuenta
+	Atributos
+		periodosMeses
+		fechaVencimiento
+Metodos
+	constructor(nNumero, sNombre, nSaldo) sobrescribir
+	obtenerPeriodos ->
+	obtenerFechaVencimiento ->
+	obtenerMontoMinimo ->
+	colocarPeriodosMeses( nPeriodo )
+	colocarFechaVencimiento( nFecVen )
+	colocarMontoMinimo( nMonMin )
+	depositar( nMonto ) -> sobrescribir
+	retirar( nMonto ) -> sobrescribir
+	calcularInteres( nPorcentaje ) -> sobrescribir
+fClase
+
+..................................................................
+..................................................................
+..................................................................
+Metodo CPlazo.constructor(nNumero, sNombre, nSaldo)
+	heredado-de constructor(nNumero, sNombre, nSaldo)
+	periodosMeses <- 6
+	fechaVencimiento <- FECHA_HOY + 6
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.colocarPeriodosMeses( nPeriodo )
+	periodosMeses <- nPeriodo
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.obtenerPeriodos ->
+	retornar periodosMeses
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.colocarFechaVencimiento( dFecVen )
+	fechaVencimiento <- dFecVen
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.obtenerFechaVencimiento ->
+	retornar fechaVencimiento
+fmetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.depositar( nMonto ) ->
+	Si (FECHA_HOY >= fechaVencimiento) entonces
+		colocarSaldo( obtenerSaldo + nMonto )
+		retornar verdadero
+	Sino
+		Retornar falso
+	fSi
+fmetodo
+
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.retirar( nMonto ) ->
+	Si (FECHA_HOY >= fechaVencimiento) entonces
+		Si (nMonto <= obtenerSaldo ) entonces
+			colocarSaldo( obtenerSaldo - nMonto )
+			retornar verdadero
+		Sino
+			Retornar falso
+		fSi
+	Sino
+		Retornar falso
+	fSi
+fmetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CPlazo.calcularInteres( nPorcentaje ) ->
+	Si (FECHA_HOY >= fechaVencimiento) entonces
+		nInteres = obtenerSaldo * nPorcentaje
+		colocarSaldo( obtenerSaldo + nInteres )
+		retornar verdadero
+	Sino
+		Retornar falso
+	fSi
+fmetodo

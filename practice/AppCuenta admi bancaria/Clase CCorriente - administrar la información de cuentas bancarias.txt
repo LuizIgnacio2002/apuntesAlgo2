@@ -1,0 +1,79 @@
+Clase CCorriente viene-de CCuenta
+	Atributos
+		sobregiro
+	Metodos
+		constructor(nNumero, sNombre, nSaldo) sobrescribir sobrecargado
+		constructor(nNumero, sNombre, nSaldo, nSobregiro) sobrescribir
+
+		sobrecargado va en algún lugar
+
+		obtenerSobregiro ->
+		colocarSobregiro( nSobregiro )
+		depositar( nMonto ) -> sobrescribir
+		retirar( nMonto ) -> sobrescribir
+		calcularInteres( nPorcentaje ) -> sobrescribir
+		calcularMantenimiento( nPorcentaje ) ->
+fclase
+..................................................................
+..................................................................
+..................................................................
+Metodo CCorriente.constructor(nNumero, sNombre, nSaldo)
+	heredado-de constructor(nNumero, sNombre, nSaldo)
+	sobregiro <- 2 * obtenerSaldo()
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CCorriente.constructor(nNumero, sNombre, nSaldo, nSobregiro)
+	heredado-de constructor(nNumero, sNombre, nSaldo)
+	sobregiro <- nSobregiro
+fMetodo
+
+..................................................................
+..................................................................
+..................................................................
+Metodo CCorriente.obtenerSobregiro ->
+	retornar sobregiro
+fMetodo
+
+..................................................................
+..................................................................
+..................................................................
+Metodo CCorriente.colocarSobregiro( nSobregiro )
+	sobregiro <- nSobregiro
+fMetodo
+..................................................................
+..................................................................
+..................................................................
+
+Metodo CCorriente.depositar( nMonto ) ->
+	colocarSaldo( obtenerSaldo() + nMonto )
+	retornar verdadero
+fMetodo
+
+..................................................................
+..................................................................
+..................................................................
+Metodo CCorriente.retirar( nMonto ) ->
+	Si ( nMonto <= obtenerSaldo() + sobregiro ) entonces
+		Si ( nMonto <= obtenerSaldo() ) entonces
+			colocarSaldo( obtenerSaldo() – nMonto )
+		Sino
+			sobregiro <- sobregiro + obtenerSaldo() – nMonto
+			colocarSaldo( 0 )
+		fSi
+		retornar verdadero
+	Sino
+		Retornar falso
+	fSi
+fMetodo
+
+..................................................................
+..................................................................
+..................................................................
+Metodo CCorriente.calcularInteres( nPorcentaje )
+	nInteres = obtenerSaldo() * nPorcentaje
+	colocarSaldo( obtenerSaldo() + nInteres )
+	retornar verdadero
+fMetodo
